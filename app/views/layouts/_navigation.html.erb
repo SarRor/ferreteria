@@ -1,0 +1,20 @@
+<div class="topnav" id="myTopnav">
+  <%= link_to 'INICIO', root_path %>
+  <%= link_to 'Productos', productos_path %>
+  <%= link_to 'Quienes Somos', quienes_somos_path %>
+  <%= link_to 'Contacto', contacto_path %>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
