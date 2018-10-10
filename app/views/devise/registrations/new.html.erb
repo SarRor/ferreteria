@@ -1,0 +1,27 @@
+<div class="devise-center">
+  <h2 class="text-center">Regístrate</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal", role: "form"}) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <label for="nombreReg"><b>Nombre</b></label>
+      <%= f.text_field :nombre, autofocus: true, autocomplete: "nombre", placeholder:"Ingresa tu nombre", class:"form-control", id:"nombreReg", required: true %>
+    </div>
+    <div class="form-group">
+      <label for="emailReg"><b>Email</b></label>
+      <%= f.email_field :email, autocomplete: "email", placeholder:"Ingresa tu e-mail", class:"form-control", id:"emailReg", required: true %>
+    </div>
+    <div class="form-group">
+      <label for="pswReg"><b>Contraseña</b></label>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> caractéres mínimo)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Ingresa tu contraseña", class:"form-control", id:"pswReg", required: true %>
+    </div>
+    <div class="form-group">
+      <label for="pswRepeatReg"><b>Repite tu contraseña</b></label>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Repite tu contraseña", class:"form-control", id:"pswRepeatReg", required: true %>
+    </div>
+    <%= f.submit "Registrarse", class:"btn btn-primary btn-lg" %>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>

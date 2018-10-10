@@ -1,12 +1,20 @@
 <div class="topnav" id="myTopnav">
   <%= link_to 'INICIO', root_path %>
-  <%= link_to 'Productos', productos_path %>
   <%= link_to 'Quienes Somos', quienes_somos_path %>
   <%= link_to 'Contacto', contacto_path %>
+  <% if usuario_signed_in? %>
+    <%= link_to 'Cerrar Sesión', destroy_usuario_session_path, method: :delete %>
+    <%= link_to "Hola #{current_usuario.nombre}", edit_usuario_registration_path, title:"Editar tus datos" %>
+  <% else %>
+    <%= link_to 'Iniciar Sesión', new_usuario_session_path %>
+    <%= link_to 'Registrarse', new_usuario_registration_path %>
+  <% end %>
+
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
 </div>
+
 
 <script>
 function myFunction() {

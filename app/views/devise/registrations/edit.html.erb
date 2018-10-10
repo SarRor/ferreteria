@@ -1,0 +1,38 @@
+<div class="devise-center">
+  <h2 class="text-center">Editar <%= resource_name.to_s.humanize %></h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal", role: "form" }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="form-group">
+      <label for="nombreEdit"><b>Nombre</b></label>
+      <%= f.text_field :nombre, autofocus: true, autocomplete: "nombre", placeholder:"Ingresa tu nombre", class:"form-control", id:"nombreEdit" %>
+    </div>
+
+    <div class="form-group">
+      <label for="emailEdit"><b>Email</b></label>
+      <%= f.email_field :email, autocomplete: "email", placeholder:"Ingresa tu e-mail", class:"form-control", id:"emailEdit" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="form-group">
+      <label for="pswNewEdit"><b>Contraseña nueva</b></label> <i>(dejar en blanco si no desea cambiarla)</i>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"6 caracteres mínimo", class:"form-control", id:"pswNewEdit" %>
+    </div>
+    <div class="form-group">
+      <label for="pswRepeatEdit"><b>Repite tu contraseña</b></label>
+      <%= f.password_field :password_confirmation, autocomplete: "password-conf", placeholder:"Repita su contraseña (solo si desea cambiarla)", class:"form-control", id:"pswRepeatEdit" %>
+    </div>
+    <div class="form-group">
+      <label for="pswActualEdit"><b>Contraseña actual</b></label> <i>(se requiere para realizar los cambios)</i>
+      <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"Contraseña actual", class:"form-control", id:"pswActualEdit", required: true %>
+    </div>
+
+    <%= f.submit "Actualizar", class:"btn btn-primary btn-lg" %>
+  <% end %>
+
+  <p><%= button_to "Cancelar cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete, class:"btn btn-danger" %></p>
+</div>
