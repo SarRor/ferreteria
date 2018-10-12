@@ -1,0 +1,106 @@
+es:
+  errors:
+    # The default format to use in full error messages.
+    format: "%{attribute} %{message}"
+
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      model_invalid: "Falló la validation: %{errors}"
+      inclusion: "No está incluida en la lista"
+      exclusion: "es reservada"
+      invalid: "es inválida"
+      confirmation: "No conincide %{attribute}"
+      accepted: "debe ser aceptada"
+      empty: "no puede estar vacio"
+      blank: "no puede estar en blanco"
+      present: "debe estar en blanco"
+      too_long:
+        one: "muy grande (máximo es 1 caracter)"
+        other: "es muy grande (máximo son %{count} caracteres)"
+      too_short:
+        one: "muy pequeño (mínimo es 1 carácter)"
+        other: "es muy pequeño (mínimo son %{count} caracteres)"
+      wrong_length:
+        one: "es la longitud incorrecta (dese ser 1 caracter)"
+        other: "es la longitud incorrecta (deben ser %{count} caracteres)"
+      not_a_number: "no es un número"
+      not_an_integer: "debe ser un entero"
+      greater_than: "debe ser mayor que %{count}"
+      greater_than_or_equal_to: "debe ser mayor o igual a %{count}"
+      equal_to: "debe ser igual a %{count}"
+      less_than: "debe ser menor que %{count}"
+      less_than_or_equal_to: "debe ser menor o igual que %{count}"
+      other_than: "debe ser otro a %{count}"
+      odd: "deber ser impar"
+      even: "debe ser par"
+      min_size_error: "su tamaño debe ser mayor que %{min_size}"
+      max_size_error: "su tamaño debe ser menor que %{max_size}"
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one:  "1 segundo"
+        other: "%{count} segundos"
+      x_seconds:
+        one:  "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one:  "1 minuto"
+        other: "%{count} minutos"
+      x_minutes:
+        one:  "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one:  "1 hora"
+        other: "%{count} horas"
+      x_days:
+        one:  "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one:  "1 mes"
+        other: "%{count} meses"
+      x_months:
+        one:  "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one:  "1 año"
+        other: "%{count} años"
+      over_x_years:
+        one:  "más de 1 año"
+        other: "más de %{count} años"
+  activerecord:
+    errors:
+      models:
+        usuario:
+          attributes:
+            email:
+              blank: "no escrito, por favor escriba un email válido"
+              taken: "Email registrado, use uno diferente"
+              invalid: "Escriba un E-mail válido"
+            password:
+              blank: "no escrito, por favor escriba un password"
+              confirmation: "El password no coincide"
+            password_confirmation:
+              blank: "no escrito, por favor especifica un password de confirmación"
+            nombre:
+              blank: "no escrito, por favor escriba su nombre"
+            direccion:
+              blank: "no escrita, por favor escriba su dirección"
+            telefono_fijo:
+              blank: "no escrito, por favor escriba su número de teléfono"
+              taken: "Número de teléfono fijo registrado, escriba uno diferente"
+              invalid: "Escriba un número de teléfono válido"
+            telefono_móvil:
+              blank: "no escrito, por favor escriba su número de teléfono"
+              taken: "Número de teléfono móvil registrado, escriba uno diferente"
+              invalid: "Escriba un número de teléfono válido"
+            imagen:
+              file_size_is_in: ! 'El archivo debe ser entre %{min} y %{max}'
+              file_size_is_less_than: ! 'El archivo debe ser menor que %{count}'
+              file_size_is_less_than_or_equal_to: ! 'el archivo debe ser menor o igual que %{count}'
+              file_size_is_greater_than: ! 'el archivo debe ser mayor que %{count}'
+              file_size_is_greater_than_or_equal_to: ! 'el archivo debe ser mayor o igual a %{count}'
+              allowed_file_content_types: ! 'el archivo debe ser del tipo %{types}'
+              excluded_file_content_types: ! 'el archivo no debe ser de los siguientes tipos %{types}'

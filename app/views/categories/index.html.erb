@@ -1,29 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Usuario</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.nombre %></td>
-        <td><%= category.usuario %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+<div class="devise-center">
+  <h1 class="text-center">Lista de Categorías</h1>
+  <% @categories.each do |category| %>
+    <div class="row <%= cycle('list_line_odd', 'list_line_even') %>">
+      <div class="col-sm-6">
+        <%= link_to category.nombre, category %>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to 'Ver', category %>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to 'Editar', edit_category_path(category) %>
+      </div>
+      <div class="col-sm-2">
+        <%= link_to 'Eliminar', category, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+      </div>
+    </div>
+  <% end %>
+  <br>
+  <%= link_to 'Crear Categoría', new_category_path %>
+</div>

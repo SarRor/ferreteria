@@ -15,6 +15,9 @@ end
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'devise', '~> 4.5'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem 'rmagick', '~> 2.16'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

@@ -13,15 +13,36 @@
  */
 @import "bootstrap";
 //_APPLICATION__________________________________________________________________
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html, body {
   position: relative;
   height: 100%;
 }
 body {
-  background: #eee;
+  background: white;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+$colores : (
+  'blanco': white,
+  'azul': #0086b3,
+  'negro': #000,
+  'gris': #ccc,
+  'lishell': #98DDDE
+);
+@each $nombre, $color in $colores{
+  .#{$nombre}-bc{
+    background-color: $color;
+  }
+  .#{$nombre}-tx{
+    color: $color;
+  }
 }
 //_Logo________________________________
 .swiper-img {
@@ -61,50 +82,56 @@ body {
   top: 0;
   left: 0;
 }
-//_Navegación___________________________________________________________________
-.topnav {
-  overflow: hidden;
-  background-color: #5F9EA0;
+//_CategoryController___________________________________________________________
+.list_line_odd{
+  background: #c5d5c5;
 }
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+.list_line_even{
+  background: #ddeedd;
 }
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-.topnav .icon {
-  display: none;
-}
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+.recordar-check{
+  height: 16px;
+  width: 16px;
+  margin-left: 15px;
+  color: #eee;
 }
 //_____Devise___________________________________________________________________
 .devise-center{
   width:80%;
   margin: auto;
-  padding: 16px;
+  padding: 150px 70px;
+  background-color: #e6ffff;
 }
+//_ProductosController__________________________________________________________
+//_index
+.index_odd{
+  background: #0086b3;
+  margin-top: 25px;
+  padding-top: 10px;
+}
+.index_even{
+  background: #006600;
+  margin-top: 25px;
+  padding-top: 10px;
+}
+.img-center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+}
+.producto-show{
+  background-color: #f3f3f3;
+  padding: 50px 3px;
+}
+.rule-show{
+  border-bottom: 3px solid black;
+}
+.item-show{
+  font-size: 1.3em;
+}
+.encab-show-cat{
+  background-color: yellow;
+  padding: 35px 10px;
+}
+//

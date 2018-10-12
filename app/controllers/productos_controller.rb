@@ -1,5 +1,7 @@
 class ProductosController < ApplicationController
   before_action :set_producto, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
+  rescue_from ActiveRecord::RecordNotFound, with: :enlace_invalido
 
   # GET /productos
   # GET /productos.json
@@ -24,11 +26,11 @@ class ProductosController < ApplicationController
   # POST /productos
   # POST /productos.json
   def create
-    @producto = Producto.new(producto_params)
+    @producto = current_usuario.productos.new(producto_params)
 
     respond_to do |format|
       if @producto.save
-        format.html { redirect_to @producto, notice: 'Producto was successfully created.' }
+        format.html { redirect_to @producto, notice: 'El producto fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @producto }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class ProductosController < ApplicationController
   def update
     respond_to do |format|
       if @producto.update(producto_params)
-        format.html { redirect_to @producto, notice: 'Producto was successfully updated.' }
+        format.html { redirect_to @producto, notice: 'El producto fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @producto }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class ProductosController < ApplicationController
   def destroy
     @producto.destroy
     respond_to do |format|
-      format.html { redirect_to productos_url, notice: 'Producto was successfully destroyed.' }
+      format.html { redirect_to productos_url, notice: 'El producto fue eliminado.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,11 @@ class ProductosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def producto_params
-      params.require(:producto).permit(:nombre, :imagen, :precio, :usuario_id)
+      params.require(:producto).permit(:nombre, :imagen, :precio, category_ids: [])
+    end
+
+    def enlace_invalido
+      logger.error "Intentó ingresar a una dirección incorrecta #{params[:id]}"
+      redirect_to archivos_url, notice: 'dirección inválida'
     end
 end

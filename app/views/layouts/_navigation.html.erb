@@ -1,28 +1,41 @@
-<div class="topnav" id="myTopnav">
-  <%= link_to 'INICIO', root_path %>
-  <%= link_to 'Quienes Somos', quienes_somos_path %>
-  <%= link_to 'Contacto', contacto_path %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to 'INICIO', root_path, class:"nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Quienes Somos', quienes_somos_path, class:"nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Contacto', contacto_path, class:"nav-link" %>
+  </li>
   <% if usuario_signed_in? %>
-    <%= link_to 'Cerrar Sesión', destroy_usuario_session_path, method: :delete %>
-    <%= link_to "Hola #{current_usuario.nombre}", edit_usuario_registration_path, title:"Editar tus datos" %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Hola <%= current_usuario.nombre %> </a>
+        <div class="dropdown-menu">
+          <%= link_to 'Cerrar Sesión', destroy_usuario_session_path, method: :delete, class:"dropdown-item" %>
+          <%= link_to "Editar datos", edit_usuario_registration_path, class:"dropdown-item"  %>
+        </div>
+      </li>
   <% else %>
-    <%= link_to 'Iniciar Sesión', new_usuario_session_path %>
-    <%= link_to 'Registrarse', new_usuario_registration_path %>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> inicia sesión </a>
+      <div class="dropdown-menu">
+        <%= link_to 'Iniciar Sesión', new_usuario_session_path, class:"dropdown-item" %>
+        <%= link_to 'Regístrate', new_usuario_registration_path, class:"dropdown-item" %>
+      </div>
+    </li>
   <% end %>
 
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
-
-
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
+  <% if usuario_signed_in? && current_usuario.is_admin? %>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Admin</a>
+      <div class="dropdown-menu">
+        <%= link_to 'Lista de productos', productos_path, class:"dropdown-item" %>
+        <%= link_to 'Agregar producto', new_producto_path, class:"dropdown-item" %>
+        <div class="dropdown-divider"></div>
+        <%= link_to 'Lista de categorías', categories_path, class:"dropdown-item" %>
+        <%= link_to 'Crear categoría', new_category_path, class:"dropdown-item" %>
+      </div>
+    </li>
+  <% end %>
+</ul>

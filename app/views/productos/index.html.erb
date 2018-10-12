@@ -1,33 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Productos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Imagen</th>
-      <th>Precio</th>
-      <th>Usuario</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @productos.each do |producto| %>
-      <tr>
-        <td><%= producto.nombre %></td>
-        <td><%= producto.imagen %></td>
-        <td><%= producto.precio %></td>
-        <td><%= producto.usuario %></td>
-        <td><%= link_to 'Show', producto %></td>
-        <td><%= link_to 'Edit', edit_producto_path(producto) %></td>
-        <td><%= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Producto', new_producto_path %>
+<h1 class="text-center">Productos</h1>
+<div class="row text-center">
+  <% @productos.each do |producto| %>
+    <div class="col-12 col-sm-6 col-lg-4 <%= cycle('index_odd', 'index_even') %>">
+      <h4 class="blanco-tx text-capitalize"> <%= producto.nombre %> </h4>
+      <%= link_to(image_tag(producto.imagen.thumb.url, class:"img-center"), producto) %>
+      <h4 class="blanco-tx"> <%= number_to_currency(producto.precio) %> </h4>
+    </div>
+  <% end %>
+</div>

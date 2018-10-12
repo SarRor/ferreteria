@@ -1,24 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="producto-show">
+  <h1 class="text-center text-primary">Información del producto</h1>
+  <hr>
+  <div class="row">
+    <div class="col-12 col-sm-5">
+      <%= image_tag(@producto.imagen.thumb.url, class:"img-center") %>
+    </div>
+    <div class="col-12 col-sm-7">
+      <h3 class="text-capitalize">Nombre: <b><%= @producto.nombre %></b></h3>
+      <h3>Precio: <b><%= number_to_currency(@producto.precio) %></b></h3>
+      <h3>Categoría(s) a que pertenece: </h3>
+      <ul class="text-capitalize">
+        <% @producto.categories.each do |cat| %>
+          <li class="item-show"><b><%= cat.nombre %></b></li>
+        <% end %>
+      </ul>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @producto.nombre %>
-</p>
-
-<p>
-  <strong>Imagen:</strong>
-  <%= @producto.imagen %>
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @producto.precio %>
-</p>
-
-<p>
-  <strong>Usuario:</strong>
-  <%= @producto.usuario %>
-</p>
-
-<%= link_to 'Edit', edit_producto_path(@producto) %> |
-<%= link_to 'Back', productos_path %>
+      <hr class="rule-show">
+      <%= link_to 'Actualizar producto', edit_producto_path(@producto), class:"btn btn-info" %> |
+      <%= link_to 'Eliminarlo', @product, method: :delete, data: { confirm: '¿Estás seguro de eliminarlo?'}, class:"btn btn-danger"  %>
+    </div>
+  </div>
+</div>

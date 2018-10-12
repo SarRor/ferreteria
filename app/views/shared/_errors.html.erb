@@ -1,0 +1,24 @@
+<% if obj.errors.any? %>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="errores-container">
+        <h2 class=errores-title>
+          <% if obj.errors.count == 1 %>
+            1 error impidió que se guardaran los datos
+          <% else %>
+            <%= obj.errors.count %> errores impidieron que se guardaran los datos
+          <% end %>
+        </h2>
+        <div class="errores-body">
+          <ul>
+            <% obj.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_002359) do
+ActiveRecord::Schema.define(version: 2018_10_10_233809) do
 
   create_table "categories", force: :cascade do |t|
     t.string "nombre"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2018_10_10_002359) do
 
   create_table "category_productos", force: :cascade do |t|
     t.integer "producto_id"
-    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category_id"
     t.index ["category_id"], name: "index_category_productos_on_category_id"
     t.index ["producto_id"], name: "index_category_productos_on_producto_id"
   end

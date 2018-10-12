@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <% if flash %>
+        <% flash.each do |name, msg| %>
+          <div class='alert text-center'>
+            <% if notice %>
+              <%= notice %>
+            <% else %>
+              <%= alert %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

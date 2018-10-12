@@ -1,14 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="row encab-show-cat">
+  <div class="col-sm-6">
+    <h1 class="text-left text-primary">Categoría: <%= @category.nombre.capitalize %> </h1>
+  </div>
+  <div class="col-sm-3 text-right">
+    <%= link_to 'Editar Categoría', edit_category_path(@category), class:"btn btn-info" %>
+  </div>
+  <div class="col-sm-3 text-left">
+    <%= link_to 'Eliminarla', @category, method: :delete, data: { confirm: '¿Estás seguro de eliminarla?'}, class:"btn btn-danger"  %>
+  </div>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @category.nombre %>
-</p>
-
-<p>
-  <strong>Usuario:</strong>
-  <%= @category.usuario %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<h2 class="text-center">Productos de ésta categoría</h2>
+<div class="row text-center">
+  <% @category.productos.each do |producto| %>
+    <div class="col-12 col-sm-6 col-lg-4 <%= cycle('index_odd', 'index_even') %>">
+      <h4 class="blanco-tx text-capitalize"> <%= producto.nombre %> </h4>
+      <%= link_to(image_tag(producto.imagen.thumb.url, class:"img-center"), producto) %>
+      <h4 class="blanco-tx"> <%= number_to_currency(producto.precio) %> </h4>
+    </div>
+  <% end %>
+</div>

@@ -1,27 +1,13 @@
-<%= form_with(model: category, local: true) do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+<%= render 'shared/errors', obj: category %>
 
-      <ul>
-      <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: category, local: true) do |form| %>
 
   <div class="field">
-    <%= form.label :nombre %>
+    <%= form.label :nombre, 'Nombre de categoría' %>
     <%= form.text_field :nombre %>
   </div>
 
-  <div class="field">
-    <%= form.label :usuario_id %>
-    <%= form.text_field :usuario_id %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Crear categoría' %>
   </div>
 <% end %>
