@@ -71,11 +71,11 @@ class ProductosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def producto_params
-      params.require(:producto).permit(:nombre, :imagen, :precio, category_ids: [])
+      params.require(:producto).permit(:nombre, :precio, :medida, :imagen, category_ids: [])
     end
 
     def enlace_invalido
       logger.error "Intentó ingresar a una dirección incorrecta #{params[:id]}"
-      redirect_to archivos_url, notice: 'dirección inválida'
+      redirect_to productos_url, notice: 'Dirección inválida'
     end
 end

@@ -6,8 +6,21 @@
       <%= image_tag(@producto.imagen.thumb.url, class:"img-center") %>
     </div>
     <div class="col-12 col-sm-7">
-      <h3 class="text-capitalize">Nombre: <b><%= @producto.nombre %></b></h3>
-      <h3>Precio: <b><%= number_to_currency(@producto.precio) %></b></h3>
+
+      <table class="table table-borderless table-sm">
+        <tr>
+          <th><h4>Nombre</h4></th>
+          <td><h3><%= @producto.nombre %></h3></td>
+        </tr>
+        <tr>
+          <th><h4>Precio</h4></th>
+          <td><h3><%= number_to_currency(@producto.precio) %></h3></td>
+        </tr>
+        <tr>
+          <th><h4>Unidad de venta por precio</h4></th>
+          <td><h3>x <%= @producto.medida %></h3></td>
+        </tr>
+      </table>
       <h3>Categoría(s) a que pertenece: </h3>
       <ul class="text-capitalize">
         <% @producto.categories.each do |cat| %>
