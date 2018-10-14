@@ -1,9 +1,19 @@
 <%= render 'carousel' %>
 <div class="row">
-  <div class="col-sm-6">
-    
-  </div>
-  <div class="col-sm-6">
-
-  </div>
+  <% @categories.each do |category| %>
+    <div class="col-12 col-md-4">
+      <h2 class="text-center"> <%= category.nombre %> </h2>
+      <ul>
+        <% contador = 0 %>
+        <% category_five_elements(category.productos).each do |producto| %>
+          <li> <%= link_to producto.nombre, producto %> </li>
+          <% if contador == 4 %>
+          <li> <%= link_to 'Catálogo de categoría...', category %> </li>
+            <% contador = 0 %>
+          <% end %>
+          <% contador += 1 %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
